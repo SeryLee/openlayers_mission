@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>연습연습</title>
+    <!--jquery 및 openlayers에 필요한 소스-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://openlayers.org/en/v6.15.1/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v6.15.1/build/ol.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <link rel="stylesheet" th:href="@{/map.css}"/>
+</head>
+<body>
+<script th:src="@{/BaseMapSource.js}"></script>
+
+<!--===================================================================-->
+<!-- 각 번호별 구현 방법을 보고싶다면 mission+해당number.js에서 확인할 것 -->
+<!--===================================================================-->
+
+<h2>1.OSM 기본맵 띄우기</h2>
+<div id="map1" class="map"></div>
+<script th:src="@{/mission/mission1.js}"></script>
+
+<!--===================================================================-->
+
+<h2>2.OpenStreetMap, VWORLD의 여러가지 지도 추가</h2>
+<div id="map2" class="map">
+    <select id="baseLayer"></select>
+</div>
+<script th:src="@{/mission/mission2.js}"></script>
+
+<!--===================================================================-->
+
+<h2>3.마우스 커서 위치를 반환하는 지도</h2>
+마우스 커서 위치 :
+<div id="coords"></div>
+<div id="map3" class="map"></div>
+<script th:src="@{/mission/mission3.js}"></script>
+
+<!--===================================================================-->
+
+<h2>4.마우스클릭 시 좌표를 확인하는 이벤트(+EPSG 3857 값을 EPSG 4326 좌표계로 변환)</h2>
+<div id="mouseClick">
+    uuid : <input id="uuid" readonly>
+    이름 : <input id="name" readonly>
+    x : <input id="longitude" readonly>
+    y : <input id="latitude" readonly>
+</div>
+<div id="map4" class="map"></div>
+<script th:src="@{/mission/mission4.js}"></script>
+
+<!--===================================================================-->
+
+<h2>5.GeoServer를 이용하여 시도/시군구/읍면동 경계선 구현</h2>
+<div id="map5" class="map">
+    <button id="sido" onclick="sido()">시도</button>
+    <button id="sigungu" onclick="sigungu()">시군구</button>
+    <button id="eupmyeondong" onclick="eupmyeondong()">읍면동</button>
+</div>
+<script th:src="@{/mission/mission5.js}"></script>
+
+<!--===================================================================-->
+
+<h2>6.버튼 하나로 시도/시군구/읍면동 경계선 바뀌는 이벤트</h2>
+<div id="map6" class="map">
+    <button id="changeMap" onclick="changeLayerByButton()">지도 변경</button>
+</div>
+<script th:src="@{/mission/mission6.js}"></script>
+
+<!--===================================================================-->
+
+<h2>7.마우스클릭 시 포인트 생성 </h2>
+<div id="map7" class="map"></div>
+<script th:src="@{/mission/mission7.js}"></script>
+
+<!--===================================================================-->
+
+<h2>8.점, 선, 면, 원 그리기 </h2>
+<select id="type">
+    <option value="Point">Point</option>
+    <option value="LineString">LineString</option>
+    <option value="Polygon">Polygon</option>
+    <option value="Circle">Circle</option>
+    <option value="none" selected="selected">None</option>
+</select>
+<div id="map8" class="map"></div>
+<script th:src="@{/mission/mission8.js}"></script>
+
+<!--===================================================================-->
+
+<h2>9.지도 위 원 생성 </h2>
+<div id="map9" class="map"></div>
+<script th:src="@{/mission/mission9.js}"></script>
+
+<!--===================================================================-->
+
+<h2>10. 지도 위 포인터 생성</h2>
+<div id="map10" class="map"></div>
+<script th:src="@{/mission/mission10.js}"></script>
+
+<!--===================================================================-->
+
+<h2>11. WFS Json url로 레이어 불러오기-1</h2>
+<div id="map11" class="map"></div>
+<script th:src="@{/mission/mission11.js}"></script>
+
+<!--===================================================================-->
+
+<h2>12. WFS Json url로 레이어 불러오기-2</h2>
+<button id="wfsData" onclick="wfsEvent()">WFS 지도 생성</button>
+<button id="GETwfs" onclick="FINDwfs()">WFS 레이어 정보</button>
+<div id="map12" class="map"></div>
+
+<script th:src="@{/mission/mission12.js}"></script>
+
+<!--===================================================================-->
+
+<h2>13. WFS Json file로 레이어 불러오기</h2>
+<button id="wfsData2" onclick="wfsEvent2()">WFS 지도 생성</button>
+<button id="GETwfs2" onclick="FINDwfs2()">WFS 레이어 정보</button>
+<div id="map13" class="map"></div>
+
+<script th:src="@{/mission/mission13.js}"></script>
+
+<!--===================================================================-->
+
+<h2>14. WFS 마우스 오버시 테두리 변경 / 클릭시 색깔 변경 + 위치 및 행정동 반환</h2>
+<div id="map14" class="map"></div>
+<div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
+</div>
+<script th:src="@{/mission/mission14.js}"></script>
+
+<!--===================================================================-->
+
+<h2>15.선, 면 그리기 + 동시 측정</h2>
+<form>
+    <label for="type">Measurement type &nbsp;</label>
+    <select id="type2">
+        <option value="LineString">Length (LineString)</option>
+        <option value="Polygon">Area (Polygon)</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="segments">Show segment lengths:&nbsp;</label>
+    <input type="checkbox" id="segments" checked/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="clear">Clear previous measure:&nbsp;</label>
+    <input type="checkbox" id="clear" checked/>
+</form>
+<div id="map15" class="map"></div>
+<script th:src="@{/mission/mission15.js}"></script>
+
+<!--===================================================================-->
+
+<h2>16.컨트롤 지도 위에 표시하기</h2>
+<div id="map16" class="map" style="">
+</div>
+<script th:src="@{/mission/mission16.js}"></script>
+
+<!--===================================================================-->
+
+<h2>17. 임의의 5지역 포인터 미리 생성 및 클릭시 해당 위치 정보 반환</h2>
+<div id="map17" class="map"></div>
+<script th:src="@{/mission/mission17.js}"></script>
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+.map {
+    width: 1200px;
+    height: 500px;
+}
+
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 280px;
+}
+
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+
+.ol-popup-closer:after {
+    content: "✖";
+}
+
+.ol-popup-closer2:after {
+    content: "✖";
+}
+
+#map16 .ol-zoom .ol-zoom-out {
+    margin-top: 200px;
+}
+
+#map16 .ol-zoomslider {
+    background-color: transparent;
+    /*
+    Zoom control top: 0.5em
+    Zoom control padding: 2px
+    Zoom in button margin top: 1px
+    Zoom in button height: font size 1.14em * 1.375 height
+    */
+    top: calc(0.5em + 2px + 1px + 1.14 * 1.375em);
+}
+
+#map16 .ol-touch .ol-zoom .ol-zoom-out {
+    margin-top: 212px;
+}
+
+#map16 .ol-touch .ol-zoomslider {
+    top: 2.75em;
+}
+
+#map16 .ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+#map16 .ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+    top: 3px;
+}
+
+#map16 .ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+#map16 .ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+    top: 232px;
+}
+
+#map16 .rotate-north {
+    margin-top: 260px;
+    margin-left: 8px;
+}
+#map16 .ol-full-screen {
+    margin-top: 30px;
+}
+#map16 .custom-map-control {
+    margin-left: 8px;
+    margin-top: 290px;
+}
+#map16 .ol-custom-overviewmap,
+#map16 .ol-custom-overviewmap.ol-uncollapsible {
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: auto;
+}
+
+#map16 .ol-custom-overviewmap:not(.ol-collapsed)  {
+    border: 1px solid black;
+}
+
+#map16 .ol-custom-overviewmap .ol-overviewmap-map {
+    border: none;
+    width: 300px;
+}
+
+#map16 .ol-custom-overviewmap .ol-overviewmap-box {
+    border: 2px solid red;
+}
+
+#map16 .ol-custom-overviewmap:not(.ol-collapsed) button{
+    bottom: auto;
+    left: auto;
+    right: 1px;
+    top: 1px;
+}
